@@ -1,0 +1,470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.20.6.final using JasperReports Library version 6.20.6-5c96b6aa8a39ac1dc6b6bea4b81168e16dd39231  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Barang_Keluar" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="7c87ecf3-af93-40fa-874b-3140116df116">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT 
+    bk.id_keluar,
+    bk.no_faktur,
+    DATE_FORMAT(bk.tanggal_keluar, '%d/%m/%Y') as tanggal_keluar,
+    t.id_toko,
+    t.nama_toko,
+    t.alamat as alamat_toko,
+    t.telepon as telepon_toko,
+    m.id_mobil,
+    m.plat_mobil,
+    m.nama_driver,
+    m.jenis as jenis_mobil,
+    u.id_user,
+    u.nama_user as input_by,
+    b.id_barang,
+    b.nama_barang,
+    b.jenis as jenis_barang,
+    dbk.jumlah,
+    sb.jumlah as stok_setelah_keluar,
+    bk.created_at
+FROM barang_keluar bk
+JOIN toko t ON bk.id_toko = t.id_toko
+JOIN detail_barang_keluar dbk ON bk.id_keluar = dbk.id_keluar
+JOIN barang b ON dbk.id_barang = b.id_barang
+LEFT JOIN mobil m ON bk.id_mobil = m.id_mobil
+LEFT JOIN user u ON bk.id_user = u.id_user
+LEFT JOIN stok_barang sb ON b.id_barang = sb.id_barang
+ORDER BY bk.tanggal_keluar DESC, bk.no_faktur ASC]]>
+	</queryString>
+	<field name="id_keluar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_keluar"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_keluar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="barang_keluar"/>
+	</field>
+	<field name="no_faktur" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="no_faktur"/>
+		<property name="com.jaspersoft.studio.field.label" value="no_faktur"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="barang_keluar"/>
+	</field>
+	<field name="tanggal_keluar" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="tanggal_keluar"/>
+		<property name="com.jaspersoft.studio.field.label" value="tanggal_keluar"/>
+	</field>
+	<field name="id_toko" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_toko"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko"/>
+	</field>
+	<field name="nama_toko" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_toko"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko"/>
+	</field>
+	<field name="alamat_toko" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="alamat"/>
+		<property name="com.jaspersoft.studio.field.label" value="alamat_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko"/>
+	</field>
+	<field name="telepon_toko" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="telepon"/>
+		<property name="com.jaspersoft.studio.field.label" value="telepon_toko"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="toko"/>
+	</field>
+	<field name="id_mobil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_mobil"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_mobil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mobil"/>
+	</field>
+	<field name="plat_mobil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="plat_mobil"/>
+		<property name="com.jaspersoft.studio.field.label" value="plat_mobil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mobil"/>
+	</field>
+	<field name="nama_driver" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_driver"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_driver"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mobil"/>
+	</field>
+	<field name="jenis_mobil" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_mobil"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="mobil"/>
+	</field>
+	<field name="id_user" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="id_user"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_user"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="input_by" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_user"/>
+		<property name="com.jaspersoft.studio.field.label" value="input_by"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="user"/>
+	</field>
+	<field name="id_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="id_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="id_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="barang"/>
+	</field>
+	<field name="nama_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.label" value="nama_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="barang"/>
+	</field>
+	<field name="jenis_barang" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="jenis"/>
+		<property name="com.jaspersoft.studio.field.label" value="jenis_barang"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="barang"/>
+	</field>
+	<field name="jumlah" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.label" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="detail_barang_keluar"/>
+	</field>
+	<field name="stok_setelah_keluar" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.name" value="jumlah"/>
+		<property name="com.jaspersoft.studio.field.label" value="stok_setelah_keluar"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="stok_barang"/>
+	</field>
+	<field name="created_at" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.name" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.label" value="created_at"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="barang_keluar"/>
+	</field>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{id_keluar}]]></groupExpression>
+		<groupHeader>
+			<band height="33">
+				<staticText>
+					<reportElement mode="Opaque" x="0" y="0" width="100" height="32" forecolor="#666666" backcolor="#E6E6E6" uuid="9e7298fd-a754-4a97-a190-3c8047a175dd"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[id_keluar]]></text>
+				</staticText>
+				<textField>
+					<reportElement mode="Opaque" x="100" y="0" width="455" height="32" forecolor="#006699" backcolor="#E6E6E6" uuid="bab6ecba-4797-4c81-a6ae-0a03552729cb"/>
+					<textElement>
+						<font size="24" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_keluar}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="-20" y="32" width="595" height="1" forecolor="#666666" uuid="c8ee1599-efbd-4bf1-a1e0-8824cb1806f9"/>
+				</line>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group2">
+		<groupExpression><![CDATA[$F{no_faktur}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="2cf5457f-a154-4686-84d2-c39fb0335d03"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{no_faktur}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="6f5d949a-2be8-485f-987f-eaf109209ea6"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[no_faktur]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group3">
+		<groupExpression><![CDATA[$F{tanggal_keluar}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="6f6fde64-f7ff-4b35-b63c-66bd6617e8dc"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{tanggal_keluar}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="f65a5149-789d-400b-954c-75657720ccbb"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[tanggal_keluar]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="Group4">
+		<groupExpression><![CDATA[$F{id_toko}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="026996ba-73a2-474d-9a49-f2280233f161"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_toko}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="7da38979-089b-4b2b-b374-15bc85d50916"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[id_toko]]></text>
+				</staticText>
+			</band>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="e3750f4c-57e8-42e7-9152-c89f43a4a62f"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[nama Toko]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="aef7d70e-1089-4feb-917a-073c4696cc75"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama_toko}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<group name="nama_toko">
+		<groupExpression><![CDATA[$F{nama_toko}]]></groupExpression>
+	</group>
+	<group name="alamat_toko">
+		<groupExpression><![CDATA[$F{alamat_toko}]]></groupExpression>
+	</group>
+	<group name="telepon_toko">
+		<groupExpression><![CDATA[$F{telepon_toko}]]></groupExpression>
+	</group>
+	<group name="id_mobil">
+		<groupExpression><![CDATA[$F{id_mobil}]]></groupExpression>
+	</group>
+	<group name="plat_mobil">
+		<groupExpression><![CDATA[$F{plat_mobil}]]></groupExpression>
+	</group>
+	<group name="nama_driver">
+		<groupExpression><![CDATA[$F{nama_driver}]]></groupExpression>
+	</group>
+	<group name="jenis_mobil">
+		<groupExpression><![CDATA[$F{jenis_mobil}]]></groupExpression>
+	</group>
+	<group name="id_user">
+		<groupExpression><![CDATA[$F{id_user}]]></groupExpression>
+	</group>
+	<group name="input_by">
+		<groupExpression><![CDATA[$F{input_by}]]></groupExpression>
+	</group>
+	<group name="id_barang">
+		<groupExpression><![CDATA[$F{id_barang}]]></groupExpression>
+	</group>
+	<group name="nama_barang">
+		<groupExpression><![CDATA[$F{nama_barang}]]></groupExpression>
+	</group>
+	<group name="jenis_barang">
+		<groupExpression><![CDATA[$F{jenis_barang}]]></groupExpression>
+	</group>
+	<group name="jumlah">
+		<groupExpression><![CDATA[$F{jumlah}]]></groupExpression>
+	</group>
+	<group name="stok_setelah_keluar">
+		<groupExpression><![CDATA[$F{stok_setelah_keluar}]]></groupExpression>
+	</group>
+	<group name="created_at">
+		<groupExpression><![CDATA[$F{created_at}]]></groupExpression>
+	</group>
+	<group name="Group5">
+		<groupExpression><![CDATA[$F{plat_mobil}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="126dee07-324f-4250-b2f1-1dbae1a31a4f"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Plat Mobil]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="d8305596-9a44-4607-8cc8-8fe9a36decf5"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{plat_mobil}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="9a1faef1-5d00-43f3-bb27-8ac68ea3b830"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Nama Driver]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="6e3c7b3b-c875-4fa5-8276-03541e88ef4b"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama_driver}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group6">
+		<groupExpression><![CDATA[$F{input_by}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="1a39b94b-b796-40f4-8135-ba2534a626eb"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[Staff]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="5a2092af-01c0-4e42-a711-dd1d980e2893"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{input_by}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group7">
+		<groupExpression><![CDATA[$F{id_barang}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="a8a05932-6b8d-413e-acda-72dd324fa474"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[id barang]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="a3bfc1f1-9a8c-4e39-a88e-20f09d87696d"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{id_barang}]]></textFieldExpression>
+				</textField>
+			</band>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="5e4e0a82-15f9-4bb6-aa6b-8163e4260d99"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[nama barang]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="11627108-5705-4c10-8ccb-67f96b8d4436"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{nama_barang}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<group name="Group8">
+		<groupExpression><![CDATA[$F{jumlah}]]></groupExpression>
+		<groupHeader>
+			<band height="32">
+				<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				<staticText>
+					<reportElement x="0" y="0" width="100" height="20" forecolor="#666666" uuid="34f72f76-6006-436a-8a26-ba353e481015"/>
+					<textElement>
+						<font size="12"/>
+					</textElement>
+					<text><![CDATA[jumlah]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="100" y="0" width="455" height="32" forecolor="#006699" uuid="defb1e38-e615-417e-a286-547a1ce49f03"/>
+					<textElement>
+						<font size="16" isBold="true"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{jumlah}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="8293fc62-3a6c-4c71-b854-db10164b91ce"/>
+				<staticText>
+					<reportElement x="0" y="20" width="595" height="43" forecolor="#FFFFFF" uuid="0aff8bec-bbf4-40bb-8027-cfa8238df7f3"/>
+					<textElement textAlignment="Center">
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Report Barang Keluar]]></text>
+				</staticText>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="21">
+			<line>
+				<reportElement x="-20" y="20" width="595" height="1" forecolor="#666666" uuid="3ab0e3d2-8d87-461c-999f-13267f011819"/>
+			</line>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="19" width="555" height="1" uuid="e20220de-00dd-431d-b3f1-8b3ab6550fd1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="4" width="515" height="13" backcolor="#E6E6E6" uuid="68e19170-0d94-413f-add4-f3e159033a9d"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="4" width="40" height="13" backcolor="#E6E6E6" uuid="7b09ecad-c3bd-4706-a6b9-f652074b9c3a"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="4" width="100" height="13" uuid="5d05f6aa-215c-4399-9e82-143c38b42df8"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>
